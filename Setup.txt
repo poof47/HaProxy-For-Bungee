@@ -21,7 +21,7 @@ Paste this in
 /etc/haproxy/haproxy.cfg
 -
 
-
+____________________________________________________________________
  frontend bungee_frontend
     bind *:<bungeePORT>
     mode tcp
@@ -38,6 +38,7 @@ backend bungee_backend
     timeout connect 10s
     timeout server 1m
     server b1 (<machine-ip>):<bungeePORT> check send-proxy-v2
+____________________________________________________________________
 
 
 
