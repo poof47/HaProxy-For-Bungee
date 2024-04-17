@@ -1,0 +1,48 @@
+HaProxy is a Reverse-proxy & Load-Balancer
+
+This lets flatten your backend ip with a new one.
+
+SAMPLE
+
+DOMAIN > PROXY > BUNGEE:LOBBY
+         1.1.1.1   2.2.2.2
+
+          VPS      (MACHINE)
+PLAYER > PROXY > BUNGEE:LOBBY
+3.3.3.3 > 1.1.1.1 <-> 2.2.2.2
+_______________________________________________
+
+
+
+(ON VPS)
+Paste this in
+
+-
+/etc/haproxy/haproxy.cfg
+-
+
+
+ frontend bungee_frontend
+    bind *:<bungeePORT>
+    mode tcp
+    option tcplog
+    timeout client 1m
+    default_backend bungee_backend
+
+backend bungee_backend
+    mode tcp
+    option tcplog
+    option log-health-checks
+    log global
+    balance roundrobin
+    timeout connect 10s
+    timeout server 1m
+    server b1 (<machine-ip>):<bungeePORT> check send-proxy-v2
+
+
+
+(ON MACHINE)
+find your bungeecord folder, open config.yml
+and find a line with the following option
+"proxy_protocol: false" set it to "true" 
+and you're good to go.
