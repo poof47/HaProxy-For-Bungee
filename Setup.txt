@@ -40,6 +40,11 @@ backend bungee_backend
     server b1 (<machine-ip>):<bungeePORT> check send-proxy-v2
 ____________________________________________________________________
 
+after you pasted the config execute:
+
+-
+sudo systemctl restart haproxy.service
+-
 
 
 (ON MACHINE)
