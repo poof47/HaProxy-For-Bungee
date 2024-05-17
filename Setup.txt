@@ -14,31 +14,14 @@ _______________________________________________
 
 
 
-(ON VPS)
+(ON VPS/SECONDARY MACHINE)
 Paste this in
 
 -
 /etc/haproxy/haproxy.cfg
 -
 
-____________________________________________________________________
- frontend bungee_frontend
-    bind *:<bungeePORT>
-    mode tcp
-    option tcplog
-    timeout client 1m
-    default_backend bungee_backend
-
-backend bungee_backend
-    mode tcp
-    option tcplog
-    option log-health-checks
-    log global
-    balance roundrobin
-    timeout connect 10s
-    timeout server 1m
-    server b1 (<machine-ip>):<bungeePORT> check send-proxy-v2
-____________________________________________________________________
+__________________________________________________________________
 
 after you pasted the config execute:
 
