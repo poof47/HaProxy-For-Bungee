@@ -1,6 +1,6 @@
 HaProxy is a Reverse-proxy & Load-Balancer
 
-This lets you cover your backend ip with a new one.
+This lets you force players to connect thru HaProxy>Bungee:YourServer
 
 SAMPLE
 
